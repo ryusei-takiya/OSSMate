@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <title>OSSMate</title>
+    </head>
+    <body>
+        <h1>人気のOSS一覧</h1>
+        <select id="language-select">
+            <option value="">すべて</option>
+            <optgroup label="バックエンド">
+              <option value="go">Go</option>
+              <option value="rust">Rust</option>
+              <option value="python">Python</option>
+              <option value="java">Java</option>
+              <option value="c">C</option>
+              <option value="c">C++</option>
+              <option value="c#">C#</option>
+              <option value="php">PHP</option>
+            </optgroup>
+            <optgroup label="フロントエンド">
+              <option value="javascript">JavaScript</option>
+              <option value="typescript">TypeScript</option>
+              <option value="html">HTML</option>
+              <option value="css">CSS</option>
+              <option value="dart">Dart</option>
+            </optgroup>
+          </select>
+          
+        <p style="font-size: 0.9em; color: gray;">
+            ※ 英語で表示されている説明文は、右クリックして「日本語に翻訳」すると読むことができます。
+        </p>
+        <ul id="repo-list"></ul>
+
+        <script>                
+            async function fetchAndRenderRepository(lang = ''){
+                // 言語が指定されていれば、クエリに含める
+                const url = lang ? `/api/trending?language=${lang}` : '/api/trending';
+
+                // Github Apiをたたく
+                const res = await fetch(url);
+                const data = await res.json();
+
+                // リスト要素を取得して、一度中身を殻にする。
+                const list = document.getElementById('repo-list');
+                list.innerHTML = '';
+                // リポジトリ情報を一件ずつリストに追加
+                data.forEach(repo => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+                        <a href="${repo.html_url}" target="_blank">${repo.full_name}</a> 
+                        - ⭐${repo.stargazers_count}<br>
+                        <small>${repo.description ?? 'No description available.'}</small>
+                    `;
+                    list.appendChild(li);
+                })
+            }
+
+            // 言語選択時
+            document.getElementById('language-select').onchange = async e => {
+                fetchAndRenderRepository(e.target.value);
+            }
+
+            // 初回ページ表示時は全権表示
+            window.onload = () => {
+                fetchAndRenderRepository();
+            }
+        </script>
+    </body>
+</html>
