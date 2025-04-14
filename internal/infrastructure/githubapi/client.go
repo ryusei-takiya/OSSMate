@@ -2,18 +2,22 @@ package githubapi
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 
 	"github.com/ryusei-takiya/ossmate/internal/domain/github"
 )
 
-func FetchPopularRepositories(language string) ([]github.Repository, error) {
-	// 例: /api/trending?language=go
-	q := "stars:>1000"
+func FetchPopularRepositories(language string, page int) ([]github.Repository, error) {
+	// GithubのAPLにクエリパラメータ（抽出条件）をセット
+	q := "stars:>0"
 	if language != "" {
-		q += "+language:" + language
+		q = "language:" + language
 	}
-	url := "https://api.github.com/search/repositories?q=" + q + "&sort=stars&order=desc&per_page=20"
+	url := fmt.Sprintf(
+		"https://api.github.com/search/repositories?q=%s&sort=stars&order=desc&per_page=%d&page=%d",
+		q, 10, page,
+	)
 
 	resp, err := http.Get(url)
 	if err != nil {

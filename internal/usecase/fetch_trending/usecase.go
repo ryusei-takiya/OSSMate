@@ -5,6 +5,6 @@ import (
 	"github.com/ryusei-takiya/ossmate/internal/infrastructure/githubapi"
 )
 
-func FetchTrendingRepos(language string) ([]github.Repository, error) {
-	return githubapi.FetchPopularRepositories(language)
+func FetchTrendingRepos(language string, page int) ([]github.Repository, error) {
+	return githubapi.FetchPopularRepositories(language, page)
 }
