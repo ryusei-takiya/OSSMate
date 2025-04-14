@@ -1,0 +1,84 @@
+/* styles/App.css */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background-color: #121212;
+  color: #f4f4f4;
+}
+
+.container {
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.title-icon {
+  font-size: 1.8rem;
+}
+
+.description {
+  font-size: 1rem;
+  color: #aaa;
+  margin-bottom: 2rem;
+}
+
+.select-wrapper {
+  margin-bottom: 2rem;
+}
+
+.select-box {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #555;
+  background-color: white;
+  color: black;
+}
+
+.repo-list {
+  list-style: none;
+  padding: 0;
+}
+
+.repo-card {
+  background-color: #1e1e1e;
+  padding: 1.2rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+}
+
+.repo-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.repo-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #60a5fa;
+  text-decoration: none;
+}
+
+.repo-stars {
+  margin-top: 0.4rem;
+  color: #facc15;
+  font-size: 0.95rem;
+}
+
+.repo-description {
+  margin-top: 0.5rem;
+  color: #ddd;
+  font-size: 0.95rem;
+}
