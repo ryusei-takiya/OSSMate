@@ -1,2 +1,32 @@
-# OssMate
-OSSトレンド＆Good First Issueを見やすく一覧化するWebアプリ（Go + React）
+# OSSMate 🚀
+
+人気の OSS リポジトリを言語ごとに検索できるツールです。
+GitHub API を使用して、スター数の多いプロジェクトを一覧表示します。
+
+OSSのトレンドや Good First Issue を、初心者にもわかりやすく視覚化します。  
+（Go + React 構成）
+
+---
+
+## 🛠 技術スタック
+
+- フロントエンド: React + TypeScript + Vite
+- バックエンド: Go + Gin
+- データ取得: GitHub REST API
+
+---
+
+## 🔧 機能
+### ✅ 初期リリース（実装済み）
+- 言語によるフィルタリング
+- スター順のソート表示
+- ページングによる表示制御
+
+### 🚧 今後の予定
+
+- 取得結果のキャッシュ機構  
+　（※ GitHub API のレート制限に対応するため、定期バッチなどを検討）
+
+- リポジトリの詳細情報・issue情報の表示（good first issue など）
+
+---
