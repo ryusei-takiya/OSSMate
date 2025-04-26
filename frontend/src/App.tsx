@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import './App.css'; // 相対パスで import！
+import './App.css';
 
 
 type Repository = {
