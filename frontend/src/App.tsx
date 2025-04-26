@@ -79,7 +79,7 @@ function App() {
         >
           ◀ 前へ
         </button>
-        <span>Page {page}</span>
+        <span translate="no">{page}ページ目</span>
         <button onClick={() => setPage(prev => prev + 1)}>次へ ▶</button>
       </div>
 
